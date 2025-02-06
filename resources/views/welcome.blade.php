@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         @isset ($data)
-        <meta ref="data" name="data" value="{{ json_encode($data)}}">
+            <meta ref="data" name="data" value="{{ json_encode($data)}}">
         @endif
         <title>Laravel</title>
 
@@ -15,6 +15,8 @@
         @vite(['resources/js/app.js', 'resources/css/app.css'])
     </head>
     <body style="background-color: #E5E5E5;">
-        <div id="app" class="mx-11"></div>
+        <div id="app" class="mx-11">
+            
+        </div>
     </body>
 </html>
