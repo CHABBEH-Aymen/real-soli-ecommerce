@@ -1,11 +1,15 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+Auth::routes();
+
 Route::get('/{vue_capture}', function () {
-    return view('welcome');
+    $data = ['user'=>Auth::user()];
+   if(Auth::check()) return view('welcome', compact('data'));
+   else view('welcome');
 })->where('vue_capture', "[\/\w\.-]*");
 
-// Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
