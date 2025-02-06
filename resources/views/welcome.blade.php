@@ -16,7 +16,7 @@
     </head>
     <body style="background-color: #E5E5E5;">
         <div id="app" class="mx-11">
-            
+
         </div>
     </body>
 </html>
