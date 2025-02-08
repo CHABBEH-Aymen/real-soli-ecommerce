@@ -15,10 +15,10 @@
             <a href="#" class="text-sm/6 font-semibold text-gray-900">Contact</a>
         </div>
         <div class="flex flex-1 justify-end items-center gap-2">
-            <Button icon="pi pi-heart" severity="contrast" variant="text" rounded aria-label="Favorite" />
-            <Button icon="pi pi-shopping-cart" severity="contrast" variant="text" rounded aria-label="Favorite" />
-            <Button v-if="isLoged" icon="pi pi-user" severity="contrast" variant="text" rounded aria-label="Favorite" />
-            <a v-if="!isLoged" href="#" class="text-sm/6 font-semibold text-gray-900">Log in <span aria-hidden="true">&rarr;</span></a>
+            <Button @click="navigate('./favorites')" icon="pi pi-heart" severity="contrast" variant="text" rounded aria-label="Favorite" />
+            <Button @click="navigate('./basket')" icon="pi pi-shopping-cart" severity="contrast" variant="text" rounded aria-label="basket" />
+            <Button @click="navigate('./account')" v-if="isLoged" icon="pi pi-user" severity="contrast" variant="text" rounded aria-label="Account" />
+            <a v-if="!isLoged" href="/login" class="text-sm/6 font-semibold text-gray-900">Log in <span aria-hidden="true">&rarr;</span></a>
         </div>
     </nav>
 </header>
@@ -30,4 +30,7 @@ import { ref } from 'vue';
 const isLoged = ref(false);
 const user = document.querySelector('head meta[name=data]').getAttribute('value');
 if (user != "" || user != null) isLoged.value = true;
+
+const navigate = (path) => {window.location.href = path}
+
 </script>
