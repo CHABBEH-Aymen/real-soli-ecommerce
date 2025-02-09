@@ -17,7 +17,7 @@
         <div class="flex flex-1 justify-end items-center gap-2">
             <Button @click="navigate('./favorites')" icon="pi pi-heart" severity="contrast" variant="text" rounded aria-label="Favorite" />
             <Button @click="navigate('./basket')" icon="pi pi-shopping-cart" severity="contrast" variant="text" rounded aria-label="basket" />
-            <Button @click="navigate('./account')" v-if="isLoged" icon="pi pi-user" severity="contrast" variant="text" rounded aria-label="Account" />
+            <DropDown v-if="isLoged" :options="userOptions" icon="pi pi-user"/>
             <a v-if="!isLoged" href="/login" class="text-sm/6 font-semibold text-gray-900">Log in <span aria-hidden="true">&rarr;</span></a>
         </div>
     </nav>
@@ -25,11 +25,26 @@
 </template>
 <script setup>
 import { Button } from 'primevue';
+import DropDown from './DropDown.vue';
 import { ref } from 'vue';
 
+const userOptions = ref([
+    {
+        label:'Account Setting',
+        icon:'pi pi-user',
+        onClick: function(){window.location.href ='./profile'}
+    },
+    {
+        label:'Logout',
+        icon:'pi pi-sign-out',
+        onClick: function(){
+            axios.post('/logout').then(function (response) {location.reload();});
+        }
+    }
+]);
 const isLoged = ref(false);
 const user = document.querySelector('head meta[name=data]').getAttribute('value');
-if (user != "" || user != null) isLoged.value = true;
+if (user != "" && user != null) isLoged.value = true;
 
 const navigate = (path) => {window.location.href = path}
 
