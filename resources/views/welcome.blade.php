@@ -4,9 +4,10 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         @isset ($data)
-            <meta ref="data" name="data" value="{{ json_encode($data)}}">
-        @endif
+        <meta ref="data" name="data" value="{{ json_encode($data)}}">
+        @else
         <meta ref="data" name="data" value="">
+        @endif
         <title>Laravel</title>
 
         <!-- Fonts -->
