@@ -6,6 +6,7 @@
         @isset ($data)
             <meta ref="data" name="data" value="{{ json_encode($data)}}">
         @endif
+        <meta ref="data" name="data" value="">
         <title>Laravel</title>
 
         <!-- Fonts -->
